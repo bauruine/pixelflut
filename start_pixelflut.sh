@@ -1,0 +1,4 @@
+for (( c=0; c<=19; c++ ))
+do  
+ python3 pixelflut.py 2001:67c:20a1:1111:2051:5dff:feda:2983 1234 weinachtshut.png &
+done
