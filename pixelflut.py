@@ -2,8 +2,8 @@ import sys
 import socket
 from PIL import Image
 
-#sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
-#sock.connect((sys.argv[1], int(sys.argv[2])))
+sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+sock.connect((sys.argv[1], int(sys.argv[2])))
 
 if len(sys.argv) > 4:
     yoffset = sys.argv[5]
