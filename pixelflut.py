@@ -24,7 +24,7 @@ payloads = []
 for x in range(w):
     for y in range(h):
         r, g, b, a = im.getpixel((x, y))
-        payloads.append([int(x) + xoffset, int(y) + yoffset, r, g, b, a])
+        payloads.append([int(x) + int(xoffset), int(y) + int(yoffset), r, g, b, a])
 
 while True:
     for payload in payloads:
