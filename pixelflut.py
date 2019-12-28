@@ -5,6 +5,15 @@ from PIL import Image
 sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
 sock.connect((sys.argv[1], int(sys.argv[2])))
 
+if sys.argv[4]:
+    xoffset = sys.argv[4]
+else:
+    xoffset = 0
+if sys.argv[5]:
+    yoffset = sys.argv[5]
+else:
+    yoffset = 0
+
 def pixel(x, y, r, g, b, a=255):
     if a == 255:
         sock.send(b'PX %d %d %02x%02x%02x\n' % (x, y, r, g, b))
@@ -17,8 +26,11 @@ payloads = []
 for x in range(w):
     for y in range(h):
         r, g, b, a = im.getpixel((x, y))
-        payloads.append([x, y, r, g, b, a])
+        payloads.append([x + xoffset, y + yoffset, r, g, b, a])
 
 while True:
     for payload in payloads:
-        pixel(payload[0], payload[1], payload[2], payload[3], payload[4], payload[5])
+        try:
+            pixel(payload[0], payload[1], payload[2], payload[3], payload[4], payload[5])
+        except OSError:
+            sock.connect((sys.argv[1], int(sys.argv[2])))
