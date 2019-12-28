@@ -2,16 +2,14 @@ import sys
 import socket
 from PIL import Image
 
-sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
-sock.connect((sys.argv[1], int(sys.argv[2])))
+#sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+#sock.connect((sys.argv[1], int(sys.argv[2])))
 
-if sys.argv[4]:
+if len(sys.argv) > 4:
+    yoffset = sys.argv[5]
     xoffset = sys.argv[4]
 else:
     xoffset = 0
-if sys.argv[5]:
-    yoffset = sys.argv[5]
-else:
     yoffset = 0
 
 def pixel(x, y, r, g, b, a=255):
