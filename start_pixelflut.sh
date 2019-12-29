@@ -3,7 +3,7 @@ do
 process_count=$(ps aux | grep pixelflut | wc -l)
 if [[ process_count -lt 10 ]]
 then
-	for (( c=0; c<=50; c++ ))
+	for (( c=0; c<=20; c++ ))
 	do  
 	 python3 /home/stefan/pixelflut/pixelflut.py --imagename $1 --host $2 --port 1234 --xoffset $3 --yoffset $4 &
 	done
