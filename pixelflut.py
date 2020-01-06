@@ -17,7 +17,7 @@ def connect():
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     else:
         sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
-
+    sock.bind((args.bind, 0))
     sock.connect((args.host, args.port))
     return sock
 
@@ -49,6 +49,7 @@ if __name__ == "__main__":
     parser.add_argument('--port', dest='port', type=int, required=True, help='Port of the pixelflut server')
     parser.add_argument('--xoffset', dest='xoffset', type=int, required=False, default=0, help='X offset')
     parser.add_argument('--yoffset', dest='yoffset', type=int, required=False, default=0, help='X offset')
+    parser.add_argument('--bind', dest='bind', type=int, required=False, default=0, help='X offset')
 
 
     #Logging
